@@ -1,0 +1,21 @@
+extends base
+
+block title
+  title= page.title + " - " + config.title
+
+block content
+  section.section-body
+    header.section-header.u-textAlignCenter
+      h2.grap--h2= page.title
+      .block-postMetaWrap= page.date.format('MMMM DD, YYYY')
+    .grap
+      != page.content
+    if page.tags
+      .tags
+        for tag in page.tags.toArray()
+          a(href=url_for(tag.path))= tag.name
+    .postFooterinfo.u-textAlignCenter 
+      figure.author-img
+        .img     
+      h3.author-name= config.author
+      .author-description= config.description

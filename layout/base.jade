@@ -1,0 +1,39 @@
+include _partial/helpers
+if page.title
+  - var current_title = page.title
+else
+  - var current_title = config.title
+
+html
+  head
+    meta(http-equiv="content-type", content="text/html; charset=utf-8")
+    meta(content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0", name="viewport")
+    meta(content="yes", name="apple-mobile-web-app-capable")
+    meta(content="black-translucent", name="apple-mobile-web-app-status-bar-style")
+    meta(content="telephone=no", name="format-detection")
+    meta(name="description", content=config.description)
+    block title
+    //+get_resource("blog_basic.css")
+    link(rel='stylesheet', type='text/css', href='/css/main.css')
+  body: .body_container 
+    .surface-content
+      header.site-header.u-textAlignCenter.hasImage
+        h1.site-title
+          a#logo(href='/')= config.title
+        p.site-description= config.subtitle
+      nav.topNav.u-textAlignCenter
+        ul.topNav-items
+          li.menu-item
+            +a_with_current(config.root, __('blog'),'nav_blog')
+          li.menu-item  
+            +a_with_current(config.archive_dir, __('archive')) 
+      main.main-content
+        .blockGroup
+          block content
+
+
+      footer.site-footer.u-textAlignCenter= 'Puma by bigfa'
+
+
+
+

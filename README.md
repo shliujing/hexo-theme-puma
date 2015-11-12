@@ -1,2 +1,3 @@
-# hexo-theme-puma
-waiting..
+#Puma
+
+beta
